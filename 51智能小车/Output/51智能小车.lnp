@@ -1,0 +1,4 @@
+"..\Output\STARTUP.obj",
+"..\Output\main.obj" 
+TO "..\Output\51智能小车" 
+PRINT("..\Listing\51智能小车.m51") RAMSIZE(256) 
