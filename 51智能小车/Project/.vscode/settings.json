@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "cstdio": "c",
+        "reg52.h": "c",
+        "stc89c52rc.h": "c",
+        "bsp_car.h": "c",
+        "REG52.H": "cpp"
+    }
+}

@@ -3,10 +3,12 @@
         {
             "name": "STC89C52RC",
             "includePath": [
-                "c:\\Project\\51智能小车\\51智能小车\\Libraries",
                 "c:\\Project\\51智能小车\\51智能小车\\User",
+                "c:\\Project\\51智能小车\\51智能小车\\Libraries",
                 "C:\\App\\keil5MDK\\C51\\INC",
-                "c:\\Project\\51智能小车\\51智能小车\\Project"
+                "c:\\Project\\51智能小车\\51智能小车\\User\\car",
+                "c:\\Project\\51智能小车\\51智能小车\\User\\uart",
+                "c:\\Project\\51智能小车\\51智能小车\\User\\bfd"
             ],
             "defines": [
                 "__C51__",

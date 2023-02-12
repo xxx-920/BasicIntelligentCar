@@ -228,7 +228,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x10000</Size>
+                <Size>0xffff</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -309,7 +309,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries;..\User</IncludePath>
+              <IncludePath>..\User;..\Libraries</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -359,12 +359,22 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>LIB</GroupName>
+          <GroupName>FWLIB</GroupName>
           <Files>
+            <File>
+              <FileName>stc89c52rc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Libraries\stc89c52rc.h</FilePath>
+            </File>
             <File>
               <FileName>STARTUP.A51</FileName>
               <FileType>2</FileType>
-              <FilePath>.\STARTUP.A51</FilePath>
+              <FilePath>..\Libraries\STARTUP.A51</FilePath>
+            </File>
+            <File>
+              <FileName>stc89c52rc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Libraries\stc89c52rc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -375,6 +385,36 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_car.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\car\bsp_car.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_car.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\car\bsp_car.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\uart\bsp_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\uart\bsp_uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_bfd_1000.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\bfd\bsp_bfd_1000.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_bfd_1000.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\bfd\bsp_bfd_1000.h</FilePath>
             </File>
           </Files>
         </Group>
