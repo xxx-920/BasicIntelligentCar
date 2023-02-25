@@ -1,0 +1,87 @@
+C51 COMPILER V9.60.7.0   BSP_CAR                                                           02/25/2023 20:52:12 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE BSP_CAR
+OBJECT MODULE PLACED IN ..\Output\bsp_car.obj
+COMPILER INVOKED BY: C:\App\keil5MDK\C51\BIN\C51.EXE ..\User\car\bsp_car.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\User;..\Li
+                    -braries) DEBUG OBJECTEXTEND PRINT(..\Listing\bsp_car.lst) TABS(2) OBJECT(..\Output\bsp_car.obj)
+
+line level    source
+
+   1          # include "./car/bsp_car.h"
+   2          
+   3          /*小车停止*/
+   4          void car_stop(void){
+   5   1          OUT1_1 = 1;
+   6   1          OUT1_2 = 1;
+   7   1          OUT2_1 = 1;
+   8   1          OUT2_2 = 1;
+   9   1          OUT3_1 = 1;
+  10   1          OUT3_2 = 1;
+  11   1          OUT4_1 = 1;
+  12   1          OUT4_2 = 1;
+  13   1      }
+  14          
+  15          /*小车前进*/
+  16          void car_forward(void){
+  17   1          OUT1_1 = 1;
+  18   1          OUT1_2 = 0;
+  19   1          OUT2_1 = 0;
+  20   1          OUT2_2 = 1;
+  21   1          OUT3_1 = 1;
+  22   1          OUT3_2 = 0;
+  23   1          OUT4_1 = 0;
+  24   1          OUT4_2 = 1;
+  25   1      }
+  26          
+  27          /*小车后退*/
+  28          void car_retreat(void){
+  29   1          OUT1_1 = 0;
+  30   1          OUT1_2 = 1;
+  31   1          OUT2_1 = 1;
+  32   1          OUT2_2 = 0;
+  33   1          OUT3_1 = 0;
+  34   1          OUT3_2 = 1;
+  35   1          OUT4_1 = 1;
+  36   1          OUT4_2 = 0;
+  37   1      }
+  38          
+  39          /*小车左转*/
+  40          void car_left(void){
+  41   1          OUT1_1 = 1;
+  42   1          OUT1_2 = 0;
+  43   1          OUT2_1 = 0;
+  44   1          OUT2_2 = 1;
+  45   1          OUT3_1 = 0;
+  46   1          OUT3_2 = 1;
+  47   1          OUT4_1 = 1;
+  48   1          OUT4_2 = 0;
+  49   1      }
+  50          
+  51          /*小车右转*/
+  52          void car_right(void){
+  53   1          OUT1_1 = 0;
+  54   1          OUT1_2 = 1;
+C51 COMPILER V9.60.7.0   BSP_CAR                                                           02/25/2023 20:52:12 PAGE 2   
+
+  55   1          OUT2_1 = 1;
+  56   1          OUT2_2 = 0;
+  57   1          OUT3_1 = 1;
+  58   1          OUT3_2 = 0;
+  59   1          OUT4_1 = 0;
+  60   1          OUT4_2 = 1;
+  61   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     85    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,8 @@
+"..\Output\STARTUP.obj",
+"..\Output\stc89cxx.obj",
+"..\Output\main.obj",
+"..\Output\bsp_car.obj",
+"..\Output\bsp_uart.obj",
+"..\Output\bsp_tcrt5000.obj" 
+TO "..\Output\51智能小车" 
+PRINT("..\Listing\51智能小车.m51") RAMSIZE(256) 

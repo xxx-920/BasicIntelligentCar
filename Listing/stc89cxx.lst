@@ -1,0 +1,25 @@
+C51 COMPILER V9.60.7.0   STC89CXX                                                          02/25/2023 20:52:12 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE STC89CXX
+OBJECT MODULE PLACED IN ..\Output\stc89cxx.obj
+COMPILER INVOKED BY: C:\App\keil5MDK\C51\BIN\C51.EXE ..\Libraries\stc89cxx.c OPTIMIZE(8,SPEED) BROWSE INCDIR(..\User;..\
+                    -Libraries) DEBUG OBJECTEXTEND PRINT(..\Listing\stc89cxx.lst) TABS(2) OBJECT(..\Output\stc89cxx.obj)
+
+line level    source
+
+   1          # include "stc89cxx.h"
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

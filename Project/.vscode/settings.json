@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "cstdio": "c",
+        "reg52.h": "c",
+        "stc89c52rc.h": "c",
+        "bsp_car.h": "c",
+        "REG52.H": "cpp",
+        "stdio.h": "c",
+        "bsp_tcrt5000.h": "c",
+        "bsp_uart.h": "c",
+        "stc89cxx.h": "c",
+        "bsp_pwm.h": "c",
+        "car.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
