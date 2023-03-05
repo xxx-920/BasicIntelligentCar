@@ -416,6 +416,16 @@
               <FileType>5</FileType>
               <FilePath>..\User\tcrt5000\bsp_tcrt5000.h</FilePath>
             </File>
+            <File>
+              <FileName>bsp_obstacle_avoidance.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\obstacle_avoidance\bsp_obstacle_avoidance.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_obstacle_avoidance.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\obstacle_avoidance\bsp_obstacle_avoidance.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

@@ -8,7 +8,8 @@
                 "C:\\App\\keil5MDK\\C51\\INC",
                 "c:\\Project\\51智能小车\\User\\car",
                 "c:\\Project\\51智能小车\\User\\uart",
-                "c:\\Project\\51智能小车\\User\\tcrt5000"
+                "c:\\Project\\51智能小车\\User\\tcrt5000",
+                "c:\\Project\\51智能小车\\User\\obstacle_avoidance"
             ],
             "defines": [
                 "__C51__",

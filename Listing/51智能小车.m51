@@ -1,13 +1,13 @@
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    02/25/2023  20:52:13  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    03/01/2023  12:59:49  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
 C:\APP\KEIL5MDK\C51\BIN\BL51.EXE ..\Output\STARTUP.obj, ..\Output\stc89cxx.obj, ..\Output\main.obj, ..\Output\bsp_car.ob
->> j, ..\Output\bsp_uart.obj, ..\Output\bsp_tcrt5000.obj TO ..\Output\51智能小车 PRINT (..\Listing\51智能小车.m51) RAMSI
->> ZE (256)
+>> j, ..\Output\bsp_uart.obj, ..\Output\bsp_tcrt5000.obj, ..\Output\bsp_obstacle_avoidance.obj TO ..\Output\51智能小车 P
+>> RINT (..\Listing\51智能小车.m51) RAMSIZE (256)
 
 
-MEMORY MODEL: SMALL
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
 
 
 INPUT MODULES INCLUDED:
@@ -17,6 +17,12 @@ INPUT MODULES INCLUDED:
   ..\Output\bsp_car.obj (BSP_CAR)
   ..\Output\bsp_uart.obj (BSP_UART)
   ..\Output\bsp_tcrt5000.obj (BSP_TCRT5000)
+  ..\Output\bsp_obstacle_avoidance.obj (BSP_OBSTACLE_AVOIDANCE)
+  C:\APP\KEIL5MDK\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  C:\APP\KEIL5MDK\C51\LIB\C51FPS.LIB (?C?FCAST)
+  C:\APP\KEIL5MDK\C51\LIB\C51FPS.LIB (?C?CASTF)
+  C:\APP\KEIL5MDK\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  C:\APP\KEIL5MDK\C51\LIB\C51S.LIB (?C?LNEG)
 
 
 LINK MAP OF MODULE:  ..\Output\51智能小车 (?C_STARTUP)
@@ -27,53 +33,76 @@ LINK MAP OF MODULE:  ..\Output\51智能小车 (?C_STARTUP)
 
             * * * * * * *   D A T A   M E M O R Y   * * * * * * *
             REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
-            DATA    0008H     0001H     UNIT         ?DT?BSP_UART
-            IDATA   0009H     0001H     UNIT         ?STACK
+            DATA    0008H     0004H     UNIT         _DATA_GROUP_
+            DATA    000CH     0001H     UNIT         ?DT?BSP_UART
+            IDATA   000DH     0001H     UNIT         ?STACK
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
             CODE    0000H     0003H     ABSOLUTE     
                     0003H     0020H                  *** GAP ***
             CODE    0023H     0003H     ABSOLUTE     
                     0026H     07DAH                  *** GAP ***
-            CODE    0800H     0063H     UNIT         ?PR?FOLLOWTHETRAIL?BSP_TCRT5000
-            CODE    0863H     005AH     UNIT         ?PR?MAIN?MAIN
-            CODE    08BDH     0018H     UNIT         ?PR?UART_CONFIG?BSP_UART
-            CODE    08D5H     0011H     UNIT         ?PR?CAR_STOP?BSP_CAR
-            CODE    08E6H     0011H     UNIT         ?PR?CAR_FORWARD?BSP_CAR
-            CODE    08F7H     0011H     UNIT         ?PR?CAR_RETREAT?BSP_CAR
-            CODE    0908H     0011H     UNIT         ?PR?CAR_LEFT?BSP_CAR
-            CODE    0919H     0011H     UNIT         ?PR?CAR_RIGHT?BSP_CAR
-            CODE    092AH     000CH     UNIT         ?C_C51STARTUP
-            CODE    0936H     0006H     UNIT         ?PR?UART?BSP_UART
+            CODE    0800H     01D3H     UNIT         ?C?LIB_CODE
+            CODE    09D3H     0059H     UNIT         ?PR?FOLLOWTHETRAIL?BSP_TCRT5000
+            CODE    0A2CH     0057H     UNIT         ?PR?OBSACLE_AVOIDANCE?BSP_OBSTACLE_AVOIDANCE
+            CODE    0A83H     0053H     UNIT         ?PR?MAIN?MAIN
+            CODE    0AD6H     0040H     UNIT         ?PR?LOOP?BSP_OBSTACLE_AVOIDANCE
+            CODE    0B16H     003FH     UNIT         ?PR?CALC?BSP_OBSTACLE_AVOIDANCE
+            CODE    0B55H     001AH     UNIT         ?PR?UART_CONFIG?BSP_UART
+            CODE    0B6FH     0016H     UNIT         ?PR?_DELAY_1MS?STC89CXX
+            CODE    0B85H     0011H     UNIT         ?PR?CAR_STOP?BSP_CAR
+            CODE    0B96H     0011H     UNIT         ?PR?CAR_FORWARD?BSP_CAR
+            CODE    0BA7H     0011H     UNIT         ?PR?CAR_RETREAT?BSP_CAR
+            CODE    0BB8H     0011H     UNIT         ?PR?CAR_LEFT?BSP_CAR
+            CODE    0BC9H     0011H     UNIT         ?PR?CAR_RIGHT?BSP_CAR
+            CODE    0BDAH     0011H     UNIT         ?PR?TRIGGER?BSP_OBSTACLE_AVOIDANCE
+            CODE    0BEBH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0BF7H     000BH     UNIT         ?PR?_DELAY?STC89CXX
+            CODE    0C02H     0009H     UNIT         ?PR?UART?BSP_UART
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/01/2023  12:59:49  PAGE 2
+
+
 
 
 
 OVERLAY MAP OF MODULE:   ..\Output\51智能小车 (?C_STARTUP)
 
 
-SEGMENT
-  +--> CALLED SEGMENT
----------------------
-?C_C51STARTUP
+SEGMENT                                            DATA_GROUP 
+  +--> CALLED SEGMENT                            START    LENGTH
+----------------------------------------------------------------
+?C_C51STARTUP                                    -----    -----
   +--> ?PR?MAIN?MAIN
 
-?PR?MAIN?MAIN
+?PR?MAIN?MAIN                                    -----    -----
   +--> ?PR?UART_CONFIG?BSP_UART
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/25/2023  20:52:13  PAGE 2
-
-
-  +--> ?PR?CAR_STOP?BSP_CAR
   +--> ?PR?CAR_FORWARD?BSP_CAR
   +--> ?PR?CAR_RETREAT?BSP_CAR
   +--> ?PR?CAR_LEFT?BSP_CAR
   +--> ?PR?CAR_RIGHT?BSP_CAR
+  +--> ?PR?CAR_STOP?BSP_CAR
   +--> ?PR?FOLLOWTHETRAIL?BSP_TCRT5000
+  +--> ?PR?OBSACLE_AVOIDANCE?BSP_OBSTACLE_AV...
 
-?PR?FOLLOWTHETRAIL?BSP_TCRT5000
+?PR?FOLLOWTHETRAIL?BSP_TCRT5000                  -----    -----
   +--> ?PR?CAR_FORWARD?BSP_CAR
+  +--> ?PR?CAR_STOP?BSP_CAR
   +--> ?PR?CAR_LEFT?BSP_CAR
   +--> ?PR?CAR_RIGHT?BSP_CAR
+
+?PR?OBSACLE_AVOIDANCE?BSP_OBSTACLE_AV...         0008H    0002H
+  +--> ?PR?CAR_FORWARD?BSP_CAR
+  +--> ?PR?LOOP?BSP_OBSTACLE_AVOIDANCE
+  +--> ?PR?CAR_RETREAT?BSP_CAR
+  +--> ?PR?_DELAY?STC89CXX
+  +--> ?PR?CAR_LEFT?BSP_CAR
   +--> ?PR?CAR_STOP?BSP_CAR
+  +--> ?PR?CAR_RIGHT?BSP_CAR
+
+?PR?LOOP?BSP_OBSTACLE_AVOIDANCE                  000AH    0002H
+  +--> ?PR?TRIGGER?BSP_OBSTACLE_AVOIDANCE
+  +--> ?PR?CALC?BSP_OBSTACLE_AVOIDANCE
+  +--> ?PR?_DELAY_1MS?STC89CXX
 
 
 
@@ -83,17 +112,20 @@ SYMBOL TABLE OF MODULE:  ..\Output\51智能小车 (?C_STARTUP)
   ----------------------------------
 
   -------         MODULE        ?C_STARTUP
-  C:092AH         SEGMENT       ?C_C51STARTUP
-  I:0009H         SEGMENT       ?STACK
+  C:0BEBH         SEGMENT       ?C_C51STARTUP
+  I:000DH         SEGMENT       ?STACK
   C:0000H         PUBLIC        ?C_STARTUP
   D:00E0H         SYMBOL        ACC
   D:00F0H         SYMBOL        B
   D:0083H         SYMBOL        DPH
   D:0082H         SYMBOL        DPL
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/01/2023  12:59:49  PAGE 3
+
+
   N:0000H         SYMBOL        IBPSTACK
   N:0100H         SYMBOL        IBPSTACKTOP
   N:0080H         SYMBOL        IDATALEN
-  C:092DH         SYMBOL        IDATALOOP
+  C:0BEEH         SYMBOL        IDATALOOP
   N:0000H         SYMBOL        PBPSTACK
   N:0100H         SYMBOL        PBPSTACKTOP
   N:0000H         SYMBOL        PDATALEN
@@ -102,97 +134,114 @@ SYMBOL TABLE OF MODULE:  ..\Output\51智能小车 (?C_STARTUP)
   N:0000H         SYMBOL        PPAGEENABLE
   D:00A0H         SYMBOL        PPAGE_SFR
   D:0081H         SYMBOL        SP
-  C:092AH         SYMBOL        STARTUP1
+  C:0BEBH         SYMBOL        STARTUP1
   N:0000H         SYMBOL        XBPSTACK
   N:0000H         SYMBOL        XBPSTACKTOP
   N:0000H         SYMBOL        XDATALEN
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
-  C:092AH         LINE#         133
-  C:092CH         LINE#         134
-  C:092DH         LINE#         135
-  C:092EH         LINE#         136
-  C:0930H         LINE#         185
-  C:0933H         LINE#         196
+  C:0BEBH         LINE#         133
+  C:0BEDH         LINE#         134
+  C:0BEEH         LINE#         135
+  C:0BEFH         LINE#         136
+  C:0BF1H         LINE#         185
+  C:0BF4H         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        STC89CXX
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0090H         PUBLIC        P1
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/25/2023  20:52:13  PAGE 3
-
-
   D:00B0H         PUBLIC        P3
+  C:0B6FH         PUBLIC        _delay_1ms
   D:00A8H         PUBLIC        IE
+  C:0BF7H         PUBLIC        _delay
   D:00B8H         PUBLIC        IP
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY_1MS
+  D:0006H         SYMBOL        z
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:0B6FH         LINE#         3
+  C:0B6FH         LINE#         5
+  C:0B6FH         LINE#         6
+  C:0B79H         LINE#         7
+  C:0B84H         LINE#         8
+  C:0B84H         LINE#         9
+  -------         ENDPROC       _DELAY_1MS
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        n
+  C:0BF7H         LINE#         11
+  C:0BF7H         LINE#         12
+  C:0C01H         LINE#         13
+  -------         ENDPROC       _DELAY
   -------         ENDMOD        STC89CXX
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/01/2023  12:59:49  PAGE 4
+
+
 
   -------         MODULE        MAIN
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
-  C:0863H         PUBLIC        main
+  C:0A83H         PUBLIC        main
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
   -------         PROC          MAIN
-  C:0863H         LINE#         8
-  C:0863H         LINE#         10
-  C:0866H         LINE#         12
-  C:0866H         LINE#         14
-  C:086BH         LINE#         15
-  C:086EH         LINE#         16
-  C:0871H         LINE#         17
-  C:0873H         LINE#         18
-  C:0878H         LINE#         19
-  C:087BH         LINE#         20
-  C:087EH         LINE#         21
-  C:0880H         LINE#         22
-  C:0885H         LINE#         23
-  C:0888H         LINE#         24
-  C:088BH         LINE#         25
-  C:088DH         LINE#         26
-  C:0892H         LINE#         27
-  C:0895H         LINE#         28
-  C:0898H         LINE#         29
-  C:089AH         LINE#         30
-  C:089FH         LINE#         31
-  C:08A2H         LINE#         32
-  C:08A4H         LINE#         33
-  C:08A9H         LINE#         34
-  C:08ACH         LINE#         35
-  C:08AFH         LINE#         36
-  C:08AFH         LINE#         37
-  C:08B2H         LINE#         38
-  C:08B8H         LINE#         39
-  C:08BBH         LINE#         40
-  C:08BBH         LINE#         41
+  C:0A83H         LINE#         9
+  C:0A83H         LINE#         11
+  C:0A86H         LINE#         13
+  C:0A86H         LINE#         15
+  C:0A8BH         LINE#         16
+  C:0A8EH         LINE#         17
+  C:0A90H         LINE#         18
+  C:0A95H         LINE#         19
+  C:0A98H         LINE#         20
+  C:0A9AH         LINE#         21
+  C:0A9FH         LINE#         22
+  C:0AA2H         LINE#         23
+  C:0AA4H         LINE#         24
+  C:0AA9H         LINE#         25
+  C:0AACH         LINE#         26
+  C:0AAEH         LINE#         27
+  C:0AB3H         LINE#         28
+  C:0AB6H         LINE#         29
+  C:0AB8H         LINE#         30
+  C:0ABDH         LINE#         31
+  C:0AC2H         LINE#         32
+  C:0AC5H         LINE#         33
+  C:0AC7H         LINE#         34
+  C:0AC7H         LINE#         35
+  C:0ACCH         LINE#         36
+  C:0AD1H         LINE#         37
+  C:0AD4H         LINE#         38
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
   -------         MODULE        BSP_CAR
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/25/2023  20:52:13  PAGE 4
-
-
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00B0H         PUBLIC        P3
   D:00A8H         PUBLIC        IE
-  C:08E6H         PUBLIC        car_forward
-  C:08F7H         PUBLIC        car_retreat
+  C:0B96H         PUBLIC        car_forward
+  C:0BA7H         PUBLIC        car_retreat
   D:00B8H         PUBLIC        IP
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
-  C:0919H         PUBLIC        car_right
+  C:0BC9H         PUBLIC        car_right
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/01/2023  12:59:49  PAGE 5
+
+
   B:0080H.0       PUBLIC        OUT1_1
   B:0080H.2       PUBLIC        OUT2_1
   B:0080H.1       PUBLIC        OUT1_2
@@ -201,72 +250,72 @@ SYMBOL TABLE OF MODULE:  ..\Output\51智能小车 (?C_STARTUP)
   B:0080H.6       PUBLIC        OUT4_1
   B:0080H.5       PUBLIC        OUT3_2
   B:0080H.7       PUBLIC        OUT4_2
-  C:0908H         PUBLIC        car_left
-  C:08D5H         PUBLIC        car_stop
+  C:0BB8H         PUBLIC        car_left
+  C:0B85H         PUBLIC        car_stop
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
   -------         PROC          CAR_STOP
-  C:08D5H         LINE#         4
-  C:08D5H         LINE#         5
-  C:08D7H         LINE#         6
-  C:08D9H         LINE#         7
-  C:08DBH         LINE#         8
-  C:08DDH         LINE#         9
-  C:08DFH         LINE#         10
-  C:08E1H         LINE#         11
-  C:08E3H         LINE#         12
-  C:08E5H         LINE#         13
+  C:0B85H         LINE#         8
+  C:0B85H         LINE#         9
+  C:0B87H         LINE#         10
+  C:0B89H         LINE#         11
+  C:0B8BH         LINE#         12
+  C:0B8DH         LINE#         13
+  C:0B8FH         LINE#         14
+  C:0B91H         LINE#         15
+  C:0B93H         LINE#         16
+  C:0B95H         LINE#         17
   -------         ENDPROC       CAR_STOP
   -------         PROC          CAR_FORWARD
-  C:08E6H         LINE#         16
-  C:08E6H         LINE#         17
-  C:08E8H         LINE#         18
-  C:08EAH         LINE#         19
-  C:08ECH         LINE#         20
-  C:08EEH         LINE#         21
-  C:08F0H         LINE#         22
-  C:08F2H         LINE#         23
-  C:08F4H         LINE#         24
-  C:08F6H         LINE#         25
+  C:0B96H         LINE#         24
+  C:0B96H         LINE#         25
+  C:0B98H         LINE#         26
+  C:0B9AH         LINE#         27
+  C:0B9CH         LINE#         28
+  C:0B9EH         LINE#         29
+  C:0BA0H         LINE#         30
+  C:0BA2H         LINE#         31
+  C:0BA4H         LINE#         32
+  C:0BA6H         LINE#         33
   -------         ENDPROC       CAR_FORWARD
   -------         PROC          CAR_RETREAT
-  C:08F7H         LINE#         28
-  C:08F7H         LINE#         29
-  C:08F9H         LINE#         30
-  C:08FBH         LINE#         31
-  C:08FDH         LINE#         32
-  C:08FFH         LINE#         33
-  C:0901H         LINE#         34
-  C:0903H         LINE#         35
-  C:0905H         LINE#         36
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/25/2023  20:52:13  PAGE 5
-
-
-  C:0907H         LINE#         37
+  C:0BA7H         LINE#         40
+  C:0BA7H         LINE#         41
+  C:0BA9H         LINE#         42
+  C:0BABH         LINE#         43
+  C:0BADH         LINE#         44
+  C:0BAFH         LINE#         45
+  C:0BB1H         LINE#         46
+  C:0BB3H         LINE#         47
+  C:0BB5H         LINE#         48
+  C:0BB7H         LINE#         49
   -------         ENDPROC       CAR_RETREAT
   -------         PROC          CAR_LEFT
-  C:0908H         LINE#         40
-  C:0908H         LINE#         41
-  C:090AH         LINE#         42
-  C:090CH         LINE#         43
-  C:090EH         LINE#         44
-  C:0910H         LINE#         45
-  C:0912H         LINE#         46
-  C:0914H         LINE#         47
-  C:0916H         LINE#         48
-  C:0918H         LINE#         49
+  C:0BB8H         LINE#         56
+  C:0BB8H         LINE#         57
+  C:0BBAH         LINE#         58
+  C:0BBCH         LINE#         59
+  C:0BBEH         LINE#         60
+  C:0BC0H         LINE#         61
+  C:0BC2H         LINE#         62
+  C:0BC4H         LINE#         63
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/01/2023  12:59:49  PAGE 6
+
+
+  C:0BC6H         LINE#         64
+  C:0BC8H         LINE#         65
   -------         ENDPROC       CAR_LEFT
   -------         PROC          CAR_RIGHT
-  C:0919H         LINE#         52
-  C:0919H         LINE#         53
-  C:091BH         LINE#         54
-  C:091DH         LINE#         55
-  C:091FH         LINE#         56
-  C:0921H         LINE#         57
-  C:0923H         LINE#         58
-  C:0925H         LINE#         59
-  C:0927H         LINE#         60
-  C:0929H         LINE#         61
+  C:0BC9H         LINE#         72
+  C:0BC9H         LINE#         73
+  C:0BCBH         LINE#         74
+  C:0BCDH         LINE#         75
+  C:0BCFH         LINE#         76
+  C:0BD1H         LINE#         77
+  C:0BD3H         LINE#         78
+  C:0BD5H         LINE#         79
+  C:0BD7H         LINE#         80
+  C:0BD9H         LINE#         81
   -------         ENDPROC       CAR_RIGHT
   -------         ENDMOD        BSP_CAR
 
@@ -283,35 +332,39 @@ SYMBOL TABLE OF MODULE:  ..\Output\51智能小车 (?C_STARTUP)
   D:0098H         PUBLIC        SCON
   D:0089H         PUBLIC        TMOD
   D:0088H         PUBLIC        TCON
-  D:0008H         PUBLIC        dat
-  C:0936H         PUBLIC        uart
+  D:000CH         PUBLIC        dat
+  C:0C02H         PUBLIC        uart
+  D:008CH         PUBLIC        TH0
   D:008DH         PUBLIC        TH1
-  D:008BH         PUBLIC        TL1
+  D:008AH         PUBLIC        TL0
   B:0088H.6       PUBLIC        TR1
   D:00C8H         PUBLIC        T2CON
-  C:08BDH         PUBLIC        uart_Config
+  C:0B55H         PUBLIC        uart_Config
   D:00D0H         PUBLIC        PSW
   -------         PROC          UART_CONFIG
-  C:08BDH         LINE#         10
-  C:08BDH         LINE#         12
-  C:08C0H         LINE#         13
-  C:08C3H         LINE#         15
-  C:08C6H         LINE#         16
-  C:08C9H         LINE#         17
-  C:08CCH         LINE#         18
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/25/2023  20:52:13  PAGE 6
-
-
-  C:08CEH         LINE#         19
-  C:08D0H         LINE#         20
-  C:08D2H         LINE#         21
-  C:08D4H         LINE#         22
+  C:0B55H         LINE#         10
+  C:0B55H         LINE#         12
+  C:0B58H         LINE#         13
+  C:0B5BH         LINE#         15
+  C:0B5EH         LINE#         16
+  C:0B61H         LINE#         17
+  C:0B64H         LINE#         18
+  C:0B66H         LINE#         19
+  C:0B68H         LINE#         20
+  C:0B6AH         LINE#         21
+  C:0B6CH         LINE#         22
+  C:0B6EH         LINE#         23
   -------         ENDPROC       UART_CONFIG
   -------         PROC          UART
-  C:0936H         LINE#         24
-  C:0936H         LINE#         26
-  C:0938H         LINE#         27
-  C:093BH         LINE#         28
+  C:0C02H         LINE#         25
+  C:0C02H         LINE#         27
+  C:0C05H         LINE#         28
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/01/2023  12:59:49  PAGE 7
+
+
+  C:0C07H         LINE#         29
+  C:0C0AH         LINE#         30
+  C:0C0AH         LINE#         31
   -------         ENDPROC       UART
   -------         ENDMOD        BSP_UART
 
@@ -326,43 +379,173 @@ SYMBOL TABLE OF MODULE:  ..\Output\51智能小车 (?C_STARTUP)
   B:0090H.3       PUBLIC        S4
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
-  C:0800H         PUBLIC        FollowTheTrail
+  C:09D3H         PUBLIC        FollowTheTrail
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   D:00C8H         PUBLIC        T2CON
   D:00D0H         PUBLIC        PSW
   -------         PROC          FOLLOWTHETRAIL
-  C:0800H         LINE#         9
-  C:0800H         LINE#         11
-  C:0818H         LINE#         12
-  C:081BH         LINE#         13
-  C:081BH         LINE#         14
-  C:081DH         LINE#         15
-  C:0829H         LINE#         16
-  C:082CH         LINE#         17
-  C:082CH         LINE#         18
-  C:082EH         LINE#         19
-  C:083AH         LINE#         20
-  C:083DH         LINE#         21
-  C:083DH         LINE#         22
-  C:083FH         LINE#         23
-  C:084BH         LINE#         24
-  C:084EH         LINE#         25
-  C:084EH         LINE#         26
-  C:0850H         LINE#         27
-  C:085CH         LINE#         28
-  C:085FH         LINE#         29
-  C:0862H         LINE#         30
-  C:0862H         LINE#         31
+  C:09D3H         LINE#         9
+  C:09D3H         LINE#         11
+  C:09EBH         LINE#         12
+  C:09EEH         LINE#         13
+  C:09F1H         LINE#         14
+  C:09F1H         LINE#         15
+  C:09FDH         LINE#         16
+  C:09FDH         LINE#         17
+  C:09FFH         LINE#         18
+  C:0A0BH         LINE#         19
+  C:0A0EH         LINE#         20
+  C:0A0EH         LINE#         21
+  C:0A1AH         LINE#         22
+  C:0A1AH         LINE#         23
+  C:0A1CH         LINE#         24
+  C:0A28H         LINE#         25
+  C:0A2BH         LINE#         26
+  C:0A2BH         LINE#         27
   -------         ENDPROC       FOLLOWTHETRAIL
   -------         ENDMOD        BSP_TCRT5000
 
+  -------         MODULE        BSP_OBSTACLE_AVOIDANCE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  C:0B16H         PUBLIC        calc
+  D:00B8H         PUBLIC        IP
+  B:00A0H.3       PUBLIC        ECHO
+  C:0A2CH         PUBLIC        Obsacle_Avoidance
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/01/2023  12:59:49  PAGE 8
+
+
+  B:00A0H.2       PUBLIC        TRIG
+  C:0AD6H         PUBLIC        loop
+  D:008CH         PUBLIC        TH0
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  C:0BDAH         PUBLIC        trigger
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          TRIGGER
+  C:0BDAH         LINE#         5
+  C:0BDAH         LINE#         6
+  C:0BDAH         LINE#         7
+  C:0BDCH         LINE#         8
+  C:0BDEH         LINE#         9
+  C:0BDFH         LINE#         10
+  C:0BE0H         LINE#         11
+  C:0BE1H         LINE#         12
+  C:0BE2H         LINE#         13
+  C:0BE3H         LINE#         14
+  C:0BE4H         LINE#         15
+  C:0BE5H         LINE#         16
+  C:0BE6H         LINE#         17
+  C:0BE7H         LINE#         18
+  C:0BE8H         LINE#         19
+  C:0BEAH         LINE#         20
+  -------         ENDPROC       TRIGGER
+  -------         PROC          CALC
+  -------         DO            
+  D:0006H         SYMBOL        duration
+  D:0006H         SYMBOL        distance
+  -------         ENDDO         
+  C:0B16H         LINE#         22
+  C:0B16H         LINE#         25
+  C:0B24H         LINE#         26
+  C:0B39H         LINE#         28
+  C:0B4FH         LINE#         29
+  C:0B52H         LINE#         30
+  C:0B54H         LINE#         32
+  C:0B54H         LINE#         33
+  -------         ENDPROC       CALC
+  -------         PROC          LOOP
+  -------         DO            
+  D:000AH         SYMBOL        distance
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:0AD6H         LINE#         35
+  C:0AD6H         LINE#         37
+  C:0ADDH         LINE#         39
+  C:0AE0H         LINE#         40
+  C:0AE3H         LINE#         41
+  C:0AE8H         LINE#         42
+  C:0AEEH         LINE#         43
+  C:0AEEH         LINE#         44
+  C:0AEEH         LINE#         45
+  C:0AEEH         LINE#         46
+  C:0AF1H         LINE#         47
+  C:0AF3H         LINE#         48
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/01/2023  12:59:49  PAGE 9
+
+
+  C:0AF6H         LINE#         49
+  C:0AFBH         LINE#         50
+  C:0B01H         LINE#         51
+  C:0B01H         LINE#         52
+  C:0B01H         LINE#         53
+  C:0B01H         LINE#         54
+  C:0B03H         LINE#         55
+  C:0B0AH         LINE#         56
+  C:0B11H         LINE#         58
+  C:0B15H         LINE#         59
+  -------         ENDPROC       LOOP
+  -------         PROC          OBSACLE_AVOIDANCE
+  -------         DO            
+  D:0008H         SYMBOL        left
+  D:0006H         SYMBOL        right
+  -------         ENDDO         
+  C:0A2CH         LINE#         61
+  C:0A2CH         LINE#         64
+  C:0A2FH         LINE#         65
+  C:0A3BH         LINE#         66
+  C:0A3EH         LINE#         67
+  C:0A45H         LINE#         68
+  C:0A48H         LINE#         69
+  C:0A4FH         LINE#         70
+  C:0A52H         LINE#         71
+  C:0A59H         LINE#         72
+  C:0A5CH         LINE#         73
+  C:0A63H         LINE#         74
+  C:0A66H         LINE#         75
+  C:0A69H         LINE#         77
+  C:0A72H         LINE#         78
+  C:0A75H         LINE#         79
+  C:0A7CH         LINE#         80
+  C:0A7FH         LINE#         81
+  C:0A82H         LINE#         82
+  C:0A82H         LINE#         83
+  C:0A82H         LINE#         84
+  -------         ENDPROC       OBSACLE_AVOIDANCE
+  -------         ENDMOD        BSP_OBSTACLE_AVOIDANCE
+
+  -------         MODULE        ?C?FPMUL
+  C:0800H         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FCAST
+  C:0910H         PUBLIC        ?C?FCASTC
+  C:090BH         PUBLIC        ?C?FCASTI
+  C:0906H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+  C:0944H         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?LNEG
+  C:09C5H         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/01/2023  12:59:49  PAGE 10
+
+
+
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0142H BYTE (15%) *
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/25/2023  20:52:13  PAGE 7
-
-
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 023EH BYTE (28%) *
 ******************************************************************************
 
-Program Size: data=10.0 xdata=0 code=322
+Program Size: data=14.0 xdata=0 code=1041
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

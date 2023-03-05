@@ -1,0 +1,111 @@
+C51 COMPILER V9.60.7.0   BSP_OBSTACLE_AVOIDANCE                                            03/01/2023 12:59:49 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE BSP_OBSTACLE_AVOIDANCE
+OBJECT MODULE PLACED IN ..\Output\bsp_obstacle_avoidance.obj
+COMPILER INVOKED BY: C:\App\keil5MDK\C51\BIN\C51.EXE ..\User\obstacle_avoidance\bsp_obstacle_avoidance.c OPTIMIZE(8,SPEE
+                    -D) BROWSE INCDIR(..\User;..\Libraries) DEBUG OBJECTEXTEND PRINT(..\Listing\bsp_obstacle_avoidance.lst) TABS(2) OBJECT(..
+                    -\Output\bsp_obstacle_avoidance.obj)
+
+line level    source
+
+   1          # include "./obstacle_avoidance/bsp_obstacle_avoidance.h"
+   2          # include "intrins.h"
+   3          # include "./car/bsp_car.h"
+   4          
+   5          void  trigger(void)              //启动模块
+   6            {
+   7   1          TRIG = 0;
+   8   1          TRIG = 1;                          //启动一次模块
+   9   1          _nop_(); 
+  10   1          _nop_(); 
+  11   1          _nop_(); 
+  12   1          _nop_(); 
+  13   1          _nop_(); 
+  14   1          _nop_(); 
+  15   1          _nop_(); 
+  16   1          _nop_(); 
+  17   1          _nop_(); 
+  18   1          _nop_(); 
+  19   1          TRIG = 0;
+  20   1        }
+  21          
+  22          uint16_t calc(void){
+  23   1      
+  24   1          uint16_t duration, distance;
+  25   1          duration = TH0 * 256 + TL0;
+  26   1          duration *= 12/11.0592;
+  27   1      
+  28   1          distance = duration * 0.017;
+  29   1          TH0 = 0;
+  30   1          TL0 = 0;
+  31   1      
+  32   1          return distance;
+  33   1      }
+  34          
+  35          uint16_t loop(void){
+  36   1      
+  37   1          uint16_t distance = 0, i = 0;
+  38   1      
+  39   1          trigger();
+  40   1          while(!ECHO){
+  41   2              i ++;
+  42   2              if (i == 1000){
+  43   3                  break;
+  44   3              }
+  45   2          }
+  46   1          i = 0;
+  47   1          TR0 = 1;
+  48   1          while(ECHO){
+  49   2              i ++;
+  50   2              if (i == 1000){
+  51   3                  break;
+  52   3              }
+  53   2          }
+C51 COMPILER V9.60.7.0   BSP_OBSTACLE_AVOIDANCE                                            03/01/2023 12:59:49 PAGE 2   
+
+  54   1          TR0 = 0;
+  55   1          distance = calc();
+  56   1          delay_1ms(10);
+  57   1      
+  58   1          return distance;
+  59   1      }
+  60          
+  61          void Obsacle_Avoidance(void){
+  62   1      
+  63   1          uint16_t left, right;
+  64   1          car_forward();
+  65   1          if (loop() <= 30){
+  66   2              car_retreat();
+  67   2              delay(4000);
+  68   2              car_left();
+  69   2              delay(4000);
+  70   2              car_stop();
+  71   2              left = loop();
+  72   2              car_right();
+  73   2              delay(8000);
+  74   2              car_stop();
+  75   2              right = loop();
+  76   2      
+  77   2              if (left >= right){
+  78   3                  car_left();
+  79   3                  delay(8000);
+  80   3                  car_stop();
+  81   3                  car_forward();
+  82   3              }
+  83   2          }
+  84   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    231    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

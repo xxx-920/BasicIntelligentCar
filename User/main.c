@@ -2,6 +2,7 @@
 # include "./car/bsp_car.h"
 # include "./uart/bsp_uart.h"
 # include "./tcrt5000/bsp_tcrt5000.h"
+# include "./obstacle_avoidance/bsp_obstacle_avoidance.h"
 
 extern char dat;
 
@@ -12,31 +13,29 @@ void main(void){
     while(1){
 
         if (dat == 'W'){
-            car_stop();
             car_forward();
         }
         else if (dat == 'S'){
-            car_stop();
             car_retreat();
         }
         else if (dat == 'A'){
-            car_stop();
             car_left();
         }
         else if (dat == 'D'){
-            car_stop();
             car_right();
         }
         else if (dat == 'T'){
             car_stop();
         }
         else if (dat == 'X'){
-            dat = ' ';
-            car_stop();
-            do{
+            while(dat == 'X'){
                 FollowTheTrail();
-            }while(dat == 'X');
-            car_stop();
+            }
+        }
+        else if (dat == 'B'){
+            while(dat == 'B'){
+                Obsacle_Avoidance();
+            }
         }
     }
 }
