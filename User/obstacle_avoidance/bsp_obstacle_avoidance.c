@@ -2,7 +2,12 @@
 # include "intrins.h"
 # include "./car/bsp_car.h"
 
-void  trigger(void) 		         //启动模块
+/**
+ *  @brief  启动模块
+ *  @param  无
+ *  @retval 无
+ */
+void  trigger(void) 		        
   {
     TRIG = 0;
     TRIG = 1;			                     //启动一次模块
@@ -19,6 +24,11 @@ void  trigger(void) 		         //启动模块
     TRIG = 0;
   }
 
+/**
+ *  @brief  测距计算
+ *  @param  无
+ *  @retval 无
+ */
 uint16_t calc(void){
 
     uint16_t duration, distance;
@@ -32,6 +42,11 @@ uint16_t calc(void){
     return distance;
 }
 
+/**
+ *  @brief  测距
+ *  @param  无
+ *  @retval 无
+ */
 uint16_t loop(void){
 
     uint16_t distance = 0, i = 0;
@@ -58,6 +73,11 @@ uint16_t loop(void){
     return distance;
 }
 
+/**
+ *  @brief  小车避障
+ *  @param  无
+ *  @retval 无
+ */
 void Obsacle_Avoidance(void){
 
     uint16_t left, right;
