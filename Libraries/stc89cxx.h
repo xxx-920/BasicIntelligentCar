@@ -1,7 +1,7 @@
 # ifndef _STC89Cxx_H
 # define _STC89Cxx_H
 
-# include "REG52.H"
+# include <REG52.H>
 
 # define uint8_t unsigned char
 # define uint16_t unsigned int

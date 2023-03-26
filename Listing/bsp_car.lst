@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   BSP_CAR                                                           03/06/2023 21:32:22 PAGE 1   
+C51 COMPILER V9.60.7.0   BSP_CAR                                                           03/19/2023 15:56:22 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE BSP_CAR
@@ -62,7 +62,7 @@ line level    source
   52           *  @brief  小车左转
   53           *  @param  无
   54           *  @retval 无
-C51 COMPILER V9.60.7.0   BSP_CAR                                                           03/06/2023 21:32:22 PAGE 2   
+C51 COMPILER V9.60.7.0   BSP_CAR                                                           03/19/2023 15:56:22 PAGE 2   
 
   55           */
   56          void car_left(void){
