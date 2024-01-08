@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   BSP_OBSTACLE_AVOIDANCE                                            03/19/2023 15:56:22 PAGE 1   
+C51 COMPILER V9.60.7.0   BSP_OBSTACLE_AVOIDANCE                                            04/06/2023 19:46:46 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE BSP_OBSTACLE_AVOIDANCE
@@ -62,7 +62,7 @@ line level    source
   51   1      
   52   1          uint16_t distance = 0, i = 0;
   53   1      
-C51 COMPILER V9.60.7.0   BSP_OBSTACLE_AVOIDANCE                                            03/19/2023 15:56:22 PAGE 2   
+C51 COMPILER V9.60.7.0   BSP_OBSTACLE_AVOIDANCE                                            04/06/2023 19:46:46 PAGE 2   
 
   54   1          trigger();
   55   1          while(!ECHO){
@@ -127,7 +127,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.
 
-C51 COMPILER V9.60.7.0   BSP_OBSTACLE_AVOIDANCE                                            03/19/2023 15:56:22 PAGE 3   
+C51 COMPILER V9.60.7.0   BSP_OBSTACLE_AVOIDANCE                                            04/06/2023 19:46:46 PAGE 3   
 
 
 C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

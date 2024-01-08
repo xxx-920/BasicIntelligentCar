@@ -49,5 +49,7 @@ void main(void){
             left_LED = 0;
             right_LED = 0;
         }
+
+        FollowTheTrail();
     }
 }
